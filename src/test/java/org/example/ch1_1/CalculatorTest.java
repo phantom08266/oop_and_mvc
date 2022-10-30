@@ -18,7 +18,7 @@ public class CalculatorTest {
     @ParameterizedTest
     @MethodSource("formulaAndResult")
     void calculateTest(int operand1, String operator, int operand2, int result) {
-        assertThat(Calculator.calculate(operand1, operator, operand2)).isEqualTo(result);
+        assertThat(Calculator.calculate(new PositiveNumber(operand1), operator, new PositiveNumber(operand2))).isEqualTo(result);
     }
 
     private static Stream<Arguments> formulaAndResult() {
@@ -28,13 +28,5 @@ public class CalculatorTest {
                 arguments(4, "*", 2, 8),
                 arguments(4, "/", 2, 2)
         );
-    }
-
-    @Test
-    @DisplayName("나눗셈에서 0을 나누는 경우 IllegalArgument 에러를 발생시킨다.")
-    void calculateExceptionTest() {
-        assertThatCode(() -> Calculator.calculate(10 , "/", 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("0으로는 나눌 수 없습니다.");
     }
 }

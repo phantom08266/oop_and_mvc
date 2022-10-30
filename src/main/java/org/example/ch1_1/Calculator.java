@@ -6,7 +6,7 @@ public class Calculator {
     private static final List<NewArithmeticOperator> arithmeticOperators = List.of(new AdditionOperator(),
             new Subtraction(), new Multiplication(), new Division());
 
-    public static int calculate(int operand1, String operator, int operand2) {
+    public static int calculate(PositiveNumber operand1, String operator, PositiveNumber operand2) {
         NewArithmeticOperator newArithmeticOperator = arithmeticOperators.stream()
                 .filter(arithmeticOperate -> arithmeticOperate.supports(operator))
                 .findFirst()
