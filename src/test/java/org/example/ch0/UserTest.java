@@ -1,5 +1,6 @@
-package org.example;
+package org.example.ch0;
 
+import org.example.ch0.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

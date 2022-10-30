@@ -1,4 +1,4 @@
-package org.example;
+package org.example.ch0;
 
 public class User {
 
