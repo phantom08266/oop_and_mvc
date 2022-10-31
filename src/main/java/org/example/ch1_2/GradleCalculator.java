@@ -4,23 +4,17 @@ import java.util.List;
 
 public class GradleCalculator {
 
-    private final List<Course> courses;
-
+    private final Courses courses;
 
     public GradleCalculator(List<Course> courses) {
-        this.courses = courses;
+        this.courses = new Courses(courses);
     }
 
     public double calculateGrade() {
-        double multipliedCreditAndCourseGrade = 0;
-        for (Course course : courses) {
-            multipliedCreditAndCourseGrade += course.multiplyCreditAndCourseGrade();
-        }
-
+        //(학점수*교과목 평점)
+        double multipliedCreditAndCourseGrade = courses.multiplyCreditAndCourseGrade();
         // 수강신청 총 학점 수
-        int totalCompleted = courses.stream()
-                .mapToInt(Course::getCredit)
-                .sum();
+        int totalCompleted = courses.calculateTotalCompletedCredit();
 
         return multipliedCreditAndCourseGrade / totalCompleted;
     }
