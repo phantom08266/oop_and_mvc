@@ -14,7 +14,7 @@ public class GradleCalculator {
     public double calculateGrade() {
         double multipliedCreditAndCourseGrade = 0;
         for (Course course : courses) {
-            multipliedCreditAndCourseGrade += course.getCredit() * course.getGradeToNumber();
+            multipliedCreditAndCourseGrade += course.multiplyCreditAndCourseGrade();
         }
 
         // 수강신청 총 학점 수
