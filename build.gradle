@@ -12,6 +12,7 @@ repositories {
 dependencies {
 //    패스워드를 생성해주는 라이브러리
     implementation 'org.passay:passay:1.6.1'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
