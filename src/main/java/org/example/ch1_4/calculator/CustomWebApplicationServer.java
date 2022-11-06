@@ -10,6 +10,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class CustomWebApplicationServer {
@@ -17,6 +19,7 @@ public class CustomWebApplicationServer {
     private final int port;
     private final static Logger logger = LoggerFactory.getLogger(CustomWebApplicationServer.class);
 
+    private final ExecutorService executorService = Executors.newFixedThreadPool(10);
     public CustomWebApplicationServer(int port) {
         this.port = port;
     }
@@ -30,7 +33,9 @@ public class CustomWebApplicationServer {
             while ((clientSocket = serverSocket.accept()) != null) {
                 logger.info("[CustomWebApplicationServer] client connected");
 
-                new Thread(new ClientRequestHandler(clientSocket)).start();
+                // Thread Pool 적용한다.
+                executorService.execute(new ClientRequestHandler(clientSocket));
+//                new Thread(new ClientRequestHandler(clientSocket)).start();
             }
         }
     }
